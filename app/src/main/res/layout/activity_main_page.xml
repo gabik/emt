@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:id="@+id/main_layout"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120sp"
+        android:src="@drawable/emtlogo"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:layout_above="@+id/ticket_btn"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/webview"
+            android:scrollbars="none"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            >
+            </WebView>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="התקשר"
+            android:layout_alignParentBottom="true"
+            android:onClick="call_me"
+            android:layout_marginBottom="20sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:background="@drawable/call_me_bg"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="15sp"
+            android:id="@+id/call_btn"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="פתח קריאה"
+            android:onClick="open_ticket"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/open_ticket_bg"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="15sp"
+            android:layout_above="@id/call_btn"
+            android:id="@id/ticket_btn"
+            />
+        </RelativeLayout>
+
+</LinearLayout>

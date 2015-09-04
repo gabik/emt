@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EMT</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="network_issue_title">בעיית התחברות</string>
+    <string name="network_issue_msg">אין גישה לרשת, אנא בדוק תקשורת ונסה שוב</string>
+    <string name="network_issue_btn">סגור</string>
+    <string name="emt">E.M.T</string>
+    <string name="msg_btn">OK</string>
+
+</resources>
