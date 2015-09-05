@@ -21,11 +21,10 @@ import java.util.ArrayList;
 
 public class MainPage extends ActionBarActivity {
 
-//    private JSONArray deals;
     private ArrayList<Deal> deals_list = new ArrayList<>();
-//    private WebView webview = new WebView(this);
     private String web_html;
     private View main_view;
+    WebView my_webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,10 @@ public class MainPage extends ActionBarActivity {
         main_view = getLayoutInflater().inflate(R.layout.activity_main_page, null, false);
         Drawable main_bg = main_view.findViewById(R.id.main_layout).getBackground();
         main_bg.setAlpha(127);
-        WebView my_webview = (WebView)main_view.findViewById(R.id.webview);
+        my_webview = (WebView)main_view.findViewById(R.id.webview);
         my_webview.getSettings().setJavaScriptEnabled(true);
+        my_webview.getSettings().setLoadWithOverviewMode(true);
+        my_webview.getSettings().setUseWideViewPort(true);
         my_webview.loadUrl("http://www.emt-it.com/#!sales/c1w1q");
         my_webview.setWebViewClient(new WebViewClient() {
             @Override
