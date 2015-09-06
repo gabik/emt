@@ -93,16 +93,32 @@
                 android:text="הודעה"
                 />
         </LinearLayout>
-        <ImageButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:src="@drawable/camera"
-            android:scaleType="fitCenter"
-            android:background="#00ffffff"
-            android:onClick="take_pic"
-            android:id="@+id/img_btn"
-            />
+            >
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:src="@drawable/camera"
+                android:scaleType="fitCenter"
+                android:background="#00ffffff"
+                android:onClick="take_pic"
+                android:id="@+id/img_btn"
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:src="@drawable/nopic"
+                android:id="@+id/thumbnail"
+                android:scaleType="fitXY"
+                android:background="#000000"
+                android:padding="2dp"
+                />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -169,6 +170,7 @@ public class OpenTicket extends ActionBarActivity {
                 imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, save_pic);
                 save_pic.flush();
                 save_pic.close();
+                ((ImageView)findViewById(R.id.thumbnail)).setImageBitmap(imageBitmap);
                 has_pic = true;
             }
         } catch (IOException e) {
