@@ -34,6 +34,7 @@ public class MainPage extends ActionBarActivity {
         main_view = getLayoutInflater().inflate(R.layout.activity_main_page, null, false);
         Drawable main_bg = main_view.findViewById(R.id.main_layout).getBackground();
         main_bg.setAlpha(127);
+        GCMRegistration.register_me(this);
         my_webview = (WebView)main_view.findViewById(R.id.webview);
         my_webview.getSettings().setJavaScriptEnabled(true);
         my_webview.getSettings().setLoadWithOverviewMode(true);
@@ -62,7 +63,7 @@ public class MainPage extends ActionBarActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    private class LoadJsonThread extends AsyncTask<Void, Integer, Void> {
+    private class RegisterInstanceID extends AsyncTask<Void, Void, Void> {
 
         private boolean is_error = false;
 

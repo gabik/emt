@@ -1,6 +1,7 @@
 package com.kazav.gabi.emt;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -45,6 +46,7 @@ public class OpenTicket extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(0);
         setContentView(R.layout.activity_ticket_page);
         ((EditText)findViewById(R.id.txt_name)).setText(AppFlow.loadString(this, "name"));
         ((EditText)findViewById(R.id.txt_phone)).setText(AppFlow.loadString(this, "phone"));

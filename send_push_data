@@ -1,0 +1,17 @@
+api_key=AIzaSyBkPPMxu2c-BEPLAY_xZM7gCpa54TmtT3k
+curl -X POST \
+-H "Authorization: key=$api_key" \
+-H "Content-Type: application/json" \
+-d '{
+"registration_ids": [
+"eKQ8agrxYso:APA91bHEduGlMXrcdK1Nn24vok68vIo3Bcwe6rkkpJDl0jFonrvQsmOZR6RIwWecw4_BUIXWytludQRZwCn90eRh9wC81G8gSLqYZeZPabs4QpAX_XiyIZmU6wgdDXtwuk7o219ti7vY"
+],
+"data": {
+"title": "Gabi",
+"body" : "Good!",
+"ticket": "ticket",
+"icon" : "http://2fly.cheap/register/emt/bigIcon.png"
+}
+}' \
+https://android.googleapis.com/gcm/send
+
