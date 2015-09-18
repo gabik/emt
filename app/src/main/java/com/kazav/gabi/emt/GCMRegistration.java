@@ -26,9 +26,9 @@ public class GCMRegistration {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(c);
         if (resultCode != ConnectionResult.SUCCESS) {
-            AppFlow.show_message(c, "אין אפשרות לפתוח את שירותי גוגל פליי", true);
+            AppFlow.show_message(c, "אין אפשרות לפתוח את שירותי גוגל פליי", false);
         }
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+        Pattern emailPattern = Patterns.EMAIL_ADDRESS;
         Account[] accounts = AccountManager.get(c).getAccounts();
         ArrayList<String> emails = new ArrayList<>();
         for (Account account : accounts) {
@@ -54,11 +54,11 @@ public class GCMRegistration {
             try {
                 InstanceID iid = InstanceID.getInstance(c);
                 token = iid.getToken(c.getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE);
-                HttpHandler post_reg = new HttpHandler("http://2fly.cheap/register/emt/add.php", "POST");
+                HttpHandler post_reg = new HttpHandler("http://app.emt-it.com/add.php", "POST");
                 List<NameValuePair> post_vals = new ArrayList<>();
                 post_vals.add(new BasicNameValuePair("emails", emails_str));
                 post_vals.add(new BasicNameValuePair("token", token));
-                String res = post_reg.makeCall(post_vals);
+                post_reg.makeCall(post_vals);
             }catch (IOException | AppFlow.NoNetException e) { e.printStackTrace(); }
             return null;
         }

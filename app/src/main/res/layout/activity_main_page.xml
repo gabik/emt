@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_bg"
@@ -8,47 +8,16 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="120sp"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
         android:src="@drawable/emtlogo"
-        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/logo"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="התקשר"
-        android:layout_alignParentBottom="true"
-        android:onClick="call_me"
-        android:layout_marginBottom="20sp"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
-        android:background="@drawable/call_me_bg"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:padding="15sp"
-        android:id="@+id/call_btn"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="פתח קריאה"
-        android:onClick="open_ticket"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
-        android:layout_marginBottom="10sp"
-        android:background="@drawable/open_ticket_bg"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:padding="15sp"
-        android:layout_above="@id/call_btn"
-        android:id="@+id/ticket_btn"
         />
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@id/ticket_btn"
-        android:layout_below="@id/logo"
+        android:layout_height="0dp"
+        android:layout_weight="0.65"
         >
         <WebView
             android:layout_width="match_parent"
@@ -58,8 +27,86 @@
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"
             android:layout_marginBottom="20sp"
+            android:scaleX="1"
+            android:scaleY="1"
             >
         </WebView>
     </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
+        >
+        <LinearLayout
+            style="@style/btns_layouts"
+            android:onClick="call_me"
+            android:id="@+id/call_btn"
+            >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_height="wrap_content"
+                    android:text="התקשר"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_phone"
+                    />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/btns_layouts"
+            android:onClick="msg_me"
+            android:id="@+id/msg_btn"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"
+                android:text="צפצף לי"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:src="@mipmap/ic_msg"
+                />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/btns_layouts"
+            android:onClick="open_ticket"
+            android:id="@+id/ticket_btn"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"
+                android:text="פתח קריאה"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:src="@mipmap/ic_ticket"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
 

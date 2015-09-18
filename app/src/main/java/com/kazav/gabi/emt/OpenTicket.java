@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -49,7 +50,12 @@ public class OpenTicket extends ActionBarActivity {
         ((NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(0);
         setContentView(R.layout.activity_ticket_page);
         ((EditText)findViewById(R.id.txt_name)).setText(AppFlow.loadString(this, "name"));
-        ((EditText)findViewById(R.id.txt_phone)).setText(AppFlow.loadString(this, "phone"));
+        EditText txt_phone = (EditText)findViewById(R.id.txt_phone);
+        String phone_str = AppFlow.loadString(this, "phone");
+        if (phone_str.equals("")) {
+            phone_str = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getLine1Number();
+        }
+            txt_phone.setText(phone_str);
         ((ImageButton)findViewById(R.id.img_btn)).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -57,7 +63,7 @@ public class OpenTicket extends ActionBarActivity {
             }
         });
 //        EditText msg = (EditText)findViewById(R.id.txt_msg);
-//        ((EditText)findViewById(R.id.txt_name)).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//        ((EditText)findViewById(R.id.txt_name)).setOnFocusChangeListener (new View.OnFocusChangeListener() {
 //            @Override
 //            public void onFocusChange(View v, boolean hasFocus) {
 //                if (!hasFocus) {

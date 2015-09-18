@@ -10,30 +10,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.List;
 
-/**
- * Created by gabik on 1/15/15.
- * Handle closing app and no net exception
- */
 
 public class AppFlow {
 
@@ -68,19 +64,9 @@ public class AppFlow {
         no_network.show();
     }
 
-    public static void contact_us(Context context) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        String subject = "Android App : ";
-        intent.setType("plain/text");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "support@gandos.net" });
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        context.startActivity(Intent.createChooser(intent, "Send Mail"));
-    }
-
     public static String loadString(Context context, String key){
         SharedPreferences prefs = context.getSharedPreferences("CommonPrefs", Activity.MODE_PRIVATE);
-        String val = prefs.getString(key, "");
-        return val;
+        return prefs.getString(key, "");
     }
 
     public static void saveString(Context context, String key, String val){
@@ -97,8 +83,7 @@ public class AppFlow {
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
+            return BitmapFactory.decodeStream(input);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -149,5 +134,32 @@ public class AppFlow {
         notificationManager.notify(0, notificationBuilder.build());
 
         return null;
+    }
+
+
+    public static class handle_location extends AsyncTask<Location, Void, Void> {
+        @Override
+        protected Void doInBackground(Location... loc_params) {
+            Location loc = loc_params[0];
+            HttpHandler send_loc = new HttpHandler("http://app.emt-it.com/loc.php", "POST");
+            List<NameValuePair> locs = new ArrayList<>();
+            if (loc != null) {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS");
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(loc.getTime());
+                locs.add(new BasicNameValuePair("GPS", loc.toString()));
+                locs.add(new BasicNameValuePair("TIM", formatter.format(calendar.getTime())));
+                locs.add(new BasicNameValuePair("PRV", loc.getProvider()));
+            } else {
+                locs.add(new BasicNameValuePair("GPS", "NONE"));
+                locs.add(new BasicNameValuePair("TIM", "NONE"));
+                locs.add(new BasicNameValuePair("PRV", "NONE"));
+            }
+            try {
+                send_loc.makeCall(locs);
+            } catch (NoNetException e) { e.printStackTrace(); }
+
+            return null;
+        }
     }
 }

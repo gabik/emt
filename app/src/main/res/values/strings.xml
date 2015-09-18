@@ -9,5 +9,6 @@
     <string name="network_issue_btn">סגור</string>
     <string name="emt">E.M.T</string>
     <string name="msg_btn">OK</string>
+    <string name="title_activity_smshandler">SMSHandler</string>
 
 </resources>

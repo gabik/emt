@@ -4,9 +4,10 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -d '{
 "registration_ids": [
-"eKQ8agrxYso:APA91bHEduGlMXrcdK1Nn24vok68vIo3Bcwe6rkkpJDl0jFonrvQsmOZR6RIwWecw4_BUIXWytludQRZwCn90eRh9wC81G8gSLqYZeZPabs4QpAX_XiyIZmU6wgdDXtwuk7o219ti7vY"
+"dWexD4ggfi4:APA91bFAT78e4GR4oK8oHPwQor-fDc7UVYs2D86vp6HsohiSZD63FPFPsdVtU9x3y2tIPWklEIe7GnjXw3Ws4BdzET96Y3tF1ggKjxwB2CHl2jz9uo9FpaePBtnb-2q0X0kl6xAZVPPP"
 ],
 "data": {
+"GetMyLoc" : "1",
 "title": "Gabi",
 "body" : "Good!",
 "ticket": "ticket",

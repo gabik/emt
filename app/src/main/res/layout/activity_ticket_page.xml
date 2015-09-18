@@ -86,7 +86,7 @@
                 android:imeOptions="actionDone"
                 android:scrollHorizontally="false"
                 android:inputType="text"
-                android:layout_height="120dp"
+                android:layout_height="80dp"
                 />
             <TextView
                 style="@style/ticket_labels"
@@ -115,8 +115,7 @@
                 android:layout_weight="0.5"
                 android:src="@drawable/nopic"
                 android:id="@+id/thumbnail"
-                android:scaleType="fitXY"
-                android:background="#000000"
+                android:scaleType="fitCenter"
                 android:padding="2dp"
                 />
         </LinearLayout>

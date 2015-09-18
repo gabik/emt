@@ -15,10 +15,16 @@ import com.google.android.gms.gcm.GcmListenerService;
 
 public class PushHendler extends GcmListenerService {
 
+    private String ACTION_GET_LOCATION = "GetMyLoc";
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
         Log.w("Got push", data.toString());
-        AppFlow.sendNotification(data, this, MainPage.class, OpenTicket.class);
+        String loc_flag = data.getString(ACTION_GET_LOCATION);
+        if (loc_flag == null) { AppFlow.sendNotification(data, this, MainPage.class, OpenTicket.class); }
+        else {
+             GetLoc locs = new GetLoc(this);
+             locs.get_loc();
+         }
     }
 }

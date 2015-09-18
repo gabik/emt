@@ -16,4 +16,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0.7</item>
     </style>
+    <style name="btns_layouts">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">0.3</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/call_me_bg</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
 </resources>
